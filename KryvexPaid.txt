@@ -1942,7 +1942,7 @@ tabs.rebirths.unequipAllPets = function()
         end
         tabs.rebirths.folderIndex = tabs.rebirths.folderIndex + 1
     end
-    task.wait(0.1)
+    task.wait(0.01)
 end
 
 tabs.rebirths.equipFarmingPets = function()
@@ -2076,7 +2076,7 @@ tabs.rebirths.performRebirth = function()
             services.muscleEvent:FireServer("rep")
             tabs.rebirths.repIndex = tabs.rebirths.repIndex + 1
         end
-        task.wait(0.02)
+        task.wait(0.01)
     end
 
     if tabs.rebirths.running and tabs.rebirths.strength.Value >= tabs.rebirths.strengthTarget then
@@ -2086,7 +2086,7 @@ tabs.rebirths.performRebirth = function()
 
         repeat
             services.replicatedstorage.rEvents.rebirthRemote:InvokeServer("rebirthRequest")
-            task.wait(0.05)
+            task.wait(0.01)
         until tabs.rebirths.rebirths.Value > tabs.rebirths.rebirthValueBefore or not tabs.rebirths.running
     end
 end
@@ -2101,7 +2101,7 @@ tabs.rebirths.startWorker = function()
         while tabs.rebirths.running do
             tabs.rebirths.equipFarmingPets()
             tabs.rebirths.performRebirth()
-            task.wait(0.5)
+            task.wait(0.01)
         end
         tabs.rebirths.workerActive = false
     end)
@@ -2300,7 +2300,7 @@ tabs.strength.updateAdaptiveRate = function()
     end
 
     if tabs.strength.stalledIntervals >= 2 then
-        tabs.strength.sendRate = math.max(tabs.strength.initialSendRate, tabs.strength.sendRate * 0.65)
+        tabs.strength.sendRate = math.max(tabs.strength.initialSendRate, tabs.strength.sendRate * 0.01)
         tabs.strength.sendTokens = 0
         tabs.strength.Status.Text = "Status: Slowing for server | "
             .. formatNumber(tabs.strength.sendRate) .. " reps/s"
@@ -2316,7 +2316,7 @@ tabs.strength.workerLoop = function()
     tabs.strength.lastLoopAt = os.clock()
     while tabs.strength.running do
         tabs.strength.loopNow = os.clock()
-        tabs.strength.loopElapsed = math.min(0.1, tabs.strength.loopNow - tabs.strength.lastLoopAt)
+        tabs.strength.loopElapsed = math.min(0.01, tabs.strength.loopNow - tabs.strength.lastLoopAt)
         tabs.strength.lastLoopAt = tabs.strength.loopNow
 
         tabs.strength.updateAdaptiveRate()
@@ -2367,7 +2367,7 @@ tabs.strength.durability:GetPropertyChangedSignal("Value"):Connect(function()
     tabs.strength.updatePace()
 end)
 
-tabs.strength.FastRepToggle = tabs.strength:AddSwitch("Fast Rep", function(state)
+tabs.strength.FastRepToggle = tabs.strength:AddSwitch("⚡️ Fast Rep", function(state)
     tabs.strength.running = state
     if state then
         if not tabs.strength.gainedBaselineSet then
