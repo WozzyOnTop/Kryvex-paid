@@ -28,7 +28,7 @@ end
 
 -- Oyuncu whitelist içinde mi kontrol et
 if not Whitelist[LocalPlayer.Name] then
-    LocalPlayer:Kick("⛔ Bu scripti kullanma yetkin yok!")
+    LocalPlayer:Kick("⛔ You are not authorized to use this script!")
     return
 end
 
