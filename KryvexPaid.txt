@@ -42,18 +42,18 @@ local displayName = game.Players.LocalPlayer.DisplayName
 
 local window = library:AddWindow("Kryvex Paid | Muscle Legends || HI - ".. displayName, {
     title_bar = {
-Color3.fromRGB(165, 85, 240),
-Color3.fromRGB(90, 40, 145),
-Color3.fromRGB(30, 8, 42)
+Color3.fromRGB(175, 20, 230), -- Açık canlı mor
+Color3.fromRGB(85, 10, 115),
+Color3.fromRGB(25, 0, 30)
 },
 title_bar_transparency = 0.1,
 background = {
-    Color3.fromRGB(7, 3, 13),
-    Color3.fromRGB(16, 8, 27),
-    Color3.fromRGB(27, 13, 40)
+    Color3.fromRGB(0, 0, 0),
+    Color3.fromRGB(8, 5, 10),
+    Color3.fromRGB(18, 10, 20)
 },
 background_transparency = 0.1,
-main_color = Color3.fromRGB(165, 85, 240),
+main_color = Color3.fromRGB(175, 20, 230), -- Açık canlı mor
 min_size = Vector2.new(420, 350),
 can_resize = true
 })
